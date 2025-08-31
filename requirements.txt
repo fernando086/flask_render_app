@@ -1,0 +1,10 @@
+flask
+flask-compress
+psycopg2-binary
+firebase-admin
+pydub
+torch
+torchaudio
+librosa
+numpy
+yt-dlp
