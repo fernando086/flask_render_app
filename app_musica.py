@@ -17,7 +17,7 @@ import librosa
 import numpy as np
 import io
 
-import re
+import re, os
 
 active_downloads = {}  # Diccionario para rastrear descargas en curso
 
