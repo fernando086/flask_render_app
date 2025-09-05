@@ -19,6 +19,7 @@ import io
 
 import re
 import os
+import json
 
 active_downloads = {}  # Diccionario para rastrear descargas en curso
 
