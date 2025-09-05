@@ -26,7 +26,8 @@ Compress(app)
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100 MB
 
 # Inicializar Firebase Admin SDK
-cred = credentials.Certificate("C:/Users/thepe/AndroidStudioProjects/intentoAppDatosMusica/tesis-musica-20242-firebase-adminsdk-fl1hr-1aac8bd291.json")
+firebase_credentials = os.getenv("FIREBASE_CREDENTIALS")
+cred = credentials.Certificate(json.loads(firebase_credentials))
 firebase_admin.initialize_app(cred)
 
 @app.route('/')
