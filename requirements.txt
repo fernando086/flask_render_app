@@ -1,4 +1,5 @@
 flask
+gunicorn
 flask-compress
 psycopg2-binary
 firebase-admin
