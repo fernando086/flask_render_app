@@ -103,13 +103,14 @@ def get_usuarios():
 def agregar_usuario_si_no_existe(nombre, uid):
     try:
         # Conexión a PostgreSQL
-        conn = psycopg2.connect(
+        '''conn = psycopg2.connect(
             host="localhost",
             database="intento_aplicacionmovil_android",  # Cambia el nombre de tu base de datos
             user="admin_fernando",  # Cambia por tu usuario de PostgreSQL
             password="191VP90957QX2685"  # Cambia por tu contraseña de PostgreSQL
-        )
-        cursor = conn.cursor()
+        )'''
+        conn = get_db_connection()
+        cursor = conn.cursor()        
 
         # Verificar si el usuario ya existe por el UID de Firebase
         cursor.execute("SELECT id FROM Usuario WHERE firebase_uid = %s", (uid,))
@@ -144,12 +145,13 @@ def get_user():
         uid = decoded_token['uid']
 
         # Conectar a PostgreSQL
-        conn = psycopg2.connect(
+        '''conn = psycopg2.connect(
             host="localhost",
             database="intento_aplicacionmovil_android",  # Cambia el nombre de tu base de datos
             user="admin_fernando",  # Cambia por tu usuario de PostgreSQL
             password="191VP90957QX2685"  # Cambia por tu contraseña de PostgreSQL
-        )
+        )'''
+        conn = get_db_connection()
         cursor = conn.cursor()
 
         # Buscar al usuario por su ID de Firebase
