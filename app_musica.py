@@ -833,8 +833,27 @@ class CNN2D_BiLSTM(nn.Module):
         return out
 
 # Crear el modelo y cargar pesos
+# Ruta local donde se guardará el modelo en Render
+MODEL_DIR = "models_oficial"
+MODEL_PATH = os.path.join(MODEL_DIR, "cnn2d_bilstm_deam.pth")
+
+# URL pública de tu modelo en Google Drive
+# IMPORTANTE: Debes generar un enlace de descarga directa
+# Ejemplo: https://drive.google.com/uc?export=download&id=TU_ID_DE_ARCHIVO
+# El enlace obtenido al compartir un archivo tiene un ID, en este caso es: 1yf5M1aZZsOnNCDQYciWcJp_qNQzBmNU9
+# Pero se necesita un enlace que permita convertir el archivo en un descargable directo:
+MODEL_URL = "https://drive.google.com/uc?export=download&id=1yf5M1aZZsOnNCDQYciWcJp_qNQzBmNU9"
+
+# Si el archivo no existe, lo descarga
+if not os.path.exists(MODEL_PATH):
+    os.makedirs(MODEL_DIR, exist_ok=True)
+    print("Descargando modelo desde Google Drive...")
+    urllib.request.urlretrieve(MODEL_URL, MODEL_PATH)
+    print("Modelo descargado correctamente!")
+
+# Cargar modelo
 model = CNN2D_BiLSTM(n_mels=128)
-model.load_state_dict(torch.load("C:/Users/thepe/AndroidStudioProjects/intentoAppDatosMusica/flask-backend/cnn2d_bilstm_deam.pth", map_location=torch.device('cpu')))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
 
 # ====== Función para preprocesar audio ======
