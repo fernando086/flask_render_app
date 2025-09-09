@@ -73,6 +73,7 @@ def protected_route():
     else:
         return jsonify({"message": "Token inválido o ausente"}), 401
 
+''' PARA BASE DE DATOS LOCAL, ES DECIR, SIN RENDER
 def get_db_connection():
     conn = psycopg2.connect(
         host="localhost",
@@ -81,6 +82,11 @@ def get_db_connection():
         password="191VP90957QX2685",
         port="5433"
     )
+    return conn
+'''
+# PARA BASE DE DATOS REAL, ES DECIR, CON RENDER
+def get_db_connection():
+    conn = psycopg2.connect(os.environ["DATABASE_URL"])
     return conn
 
 @app.route('/usuarios')
