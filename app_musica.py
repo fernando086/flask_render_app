@@ -193,13 +193,14 @@ def verificar_o_guardar_usuario():
 
     try:
         print("estableciendo conexión con BD PostgreSQL")
-        conn = psycopg2.connect(
+        '''conn = psycopg2.connect(
             host="localhost",
             database="intento_aplicacionmovil_android",
             user="admin_fernando",
             password="191VP90957QX2685",
             port="5433"
-        )
+        )'''
+        conn = get_db_connection()
         print("el usuario que se conectará a la base de datos ha sido identificado")
         cursor = conn.cursor()
         print("cursor conectado")
@@ -247,13 +248,14 @@ def obtener_datos_usuario():
         return jsonify({"error": "Firebase UID no proporcionado"}), 400
 
     try:
-        conn = psycopg2.connect(
+        '''conn = psycopg2.connect(
             host="localhost",
             database="intento_aplicacionmovil_android",
             user="admin_fernando",
             password="191VP90957QX2685",
             port="5433"
-        )
+        )'''
+        conn = get_db_connection()
         cursor = conn.cursor()
 
         # Obtener los datos del usuario desde la base de datos
