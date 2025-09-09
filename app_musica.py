@@ -20,6 +20,7 @@ import io
 import re
 import os
 import json
+import urllib.request
 
 active_downloads = {}  # Diccionario para rastrear descargas en curso
 
